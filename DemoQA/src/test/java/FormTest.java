@@ -27,13 +27,13 @@ class FormTest {
     @DisplayName("Form submission with mandatory data only")
     @Test
     void testFormSubmissionWithMandatoryDataOnly() {
-        loginPage.fillForm("John", "Doe", 1, "0123456789");
+        loginPage.fillForm("John", "Doe", LoginPage.FEMALE, "0123456789");
         loginPage.submitForm();
 
         assertTrue(loginPage.hasText("Student Registration Form"));
         assertEquals("John Doe", loginPage.getTableName());
-        assertEquals("Male", loginPage.getTableGender());
-        assertEquals("0123456789", loginPage.getTablePhone());
+        assertEquals("Female", loginPage.getTableGender());
+        assertEquals("0123456789", loginPage.getTableNumber());
     }
 
     @DisplayName("Do not submit any information in the form")
