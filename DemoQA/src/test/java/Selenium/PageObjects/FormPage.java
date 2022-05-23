@@ -45,9 +45,9 @@ public class FormPage {
 
     private By resolverGender(Integer number) {
         return switch (number) {
-            case 1 -> By.xpath("//*[@id=\"genterWrapper\"]/div[2]/div[1]/label");
-            case 2 -> By.xpath("//*[@id=\"genterWrapper\"]/div[2]/div[2]/label");
-            case 3 -> By.xpath("//*[@id=\"genterWrapper\"]/div[2]/div[3]/label");
+            case MALE -> By.xpath("//*[@id=\"genterWrapper\"]/div[2]/div[1]/label");
+            case FEMALE -> By.xpath("//*[@id=\"genterWrapper\"]/div[2]/div[2]/label");
+            case OTHER -> By.xpath("//*[@id=\"genterWrapper\"]/div[2]/div[3]/label");
             default -> null;
         };
     }
