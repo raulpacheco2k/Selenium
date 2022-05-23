@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class LoginPage {
+public class FormPage {
 
     private static final String PAGE = "https://demoqa.com/automation-practice-form";
     private final WebDriver webDriver;
@@ -24,9 +24,14 @@ public class LoginPage {
     private final By tableGenderBy = By.xpath("/html/body/div[4]/div/div/div[2]/div/table/tbody/tr[3]/td[2]");
     private final By tableNumberBy = By.xpath("/html/body/div[4]/div/div/div[2]/div/table/tbody/tr[4]/td[2]");
 
-    public LoginPage() {
+    public FormPage() {
         System.setProperty("webdriver.chrome.driver", "../docs/drivers/chromedriver.exe");
         webDriver = new ChromeDriver();
+    }
+
+    public FormPage(WebDriver webDriver1) {
+        System.setProperty("webdriver.chrome.driver", "../docs/drivers/chromedriver.exe");
+        webDriver = webDriver1;
     }
 
     public void beforeEach() {

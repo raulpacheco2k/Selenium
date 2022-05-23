@@ -1,6 +1,6 @@
 package JUnit;
 
-import Selenium.PageObjects.LoginPage;
+import Selenium.PageObjects.FormPage;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -10,39 +10,39 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class FormTest {
 
-    private static LoginPage loginPage;
+    private static FormPage formPage;
 
     public FormTest() {
-        loginPage = new LoginPage();
+        formPage = new FormPage();
     }
 
     @BeforeEach
     public void beforeEach() {
-        loginPage.beforeEach();
+        formPage.beforeEach();
     }
 
     @AfterEach
     public void tearDown() {
-        loginPage.afterEach();
+        formPage.afterEach();
     }
 
     @DisplayName("Form submission with mandatory data only")
     @Test
     void testFormSubmissionWithMandatoryDataOnly() {
-        loginPage.fillForm("John", "Doe", LoginPage.FEMALE, "0123456789");
-        loginPage.submitForm();
+        formPage.fillForm("John", "Doe", FormPage.FEMALE, "0123456789");
+        formPage.submitForm();
 
-        assertTrue(loginPage.hasText("Student Registration Form"));
-        assertEquals("John Doe", loginPage.getTableName());
-        assertEquals("Female", loginPage.getTableGender());
-        assertEquals("0123456789", loginPage.getTableNumber());
+        assertTrue(formPage.hasText("Student Registration Form"));
+        assertEquals("John Doe", formPage.getTableName());
+        assertEquals("Female", formPage.getTableGender());
+        assertEquals("0123456789", formPage.getTableNumber());
     }
 
     @DisplayName("Do not submit any information in the form")
     @Test
     void testDoNotSubmitAnyInformationInTheForm() {
-        loginPage.submitForm();
+        formPage.submitForm();
 
-        assertNull(loginPage.getModal());
+        assertNull(formPage.getModal());
     }
 }
