@@ -52,15 +52,17 @@ public class FormPage {
         };
     }
 
-    public void fillForm(String firstName, String lastName, Integer gender, String phone) {
+    public FormPage fillForm(String firstName, String lastName, Integer gender, String phone) {
         webDriver.findElement(firstNameBy).sendKeys(firstName);
         webDriver.findElement(lastNameBy).sendKeys(lastName);
         webDriver.findElement(resolverGender(gender)).click();
         webDriver.findElement(userNumberBy).sendKeys(phone);
+        return this;
     }
 
-    public void submitForm() {
+    public FormPage submitForm() {
         webDriver.findElement(By.id("userForm")).submit();
+        return this;
     }
 
     public WebElement getModal() {

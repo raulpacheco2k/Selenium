@@ -29,8 +29,8 @@ class FormTest {
     @DisplayName("Form submission with mandatory data only")
     @Test
     void testFormSubmissionWithMandatoryDataOnly() {
-        formPage.fillForm("John", "Doe", FormPage.FEMALE, "0123456789");
-        formPage.submitForm();
+        formPage.fillForm("John", "Doe", FormPage.FEMALE, "0123456789")
+                .submitForm();
 
         assertTrue(formPage.hasText("Student Registration Form"));
         assertEquals("John Doe", formPage.getTableName());
