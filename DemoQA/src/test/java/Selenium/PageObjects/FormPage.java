@@ -4,12 +4,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class FormPage {
+import java.time.Duration;
 
-    private static final String PAGE = "https://demoqa.com/automation-practice-form";
-    private final WebDriver webDriver;
+public class FormPage extends PageObject {
 
     public static final int MALE = 1;
     public static final int FEMALE = 2;
@@ -25,22 +24,11 @@ public class FormPage {
     private final By tableNumberBy = By.xpath("/html/body/div[4]/div/div/div[2]/div/table/tbody/tr[4]/td[2]");
 
     public FormPage() {
-        System.setProperty("webdriver.chrome.driver", "../docs/drivers/chromedriver.exe");
-        webDriver = new ChromeDriver();
+        super("https://demoqa.com/automation-practice-form");
     }
 
-    public FormPage(WebDriver webDriver1) {
-        System.setProperty("webdriver.chrome.driver", "../docs/drivers/chromedriver.exe");
-        webDriver = webDriver1;
-    }
-
-    public void beforeEach() {
-        webDriver.manage().window().maximize();
-        webDriver.navigate().to(PAGE);
-    }
-
-    public void afterEach() {
-        webDriver.quit();
+    public FormPage(WebDriver webDriver) {
+        super(webDriver);
     }
 
     private By resolverGender(Integer number) {
@@ -57,6 +45,10 @@ public class FormPage {
         webDriver.findElement(lastNameBy).sendKeys(lastName);
         webDriver.findElement(resolverGender(gender)).click();
         webDriver.findElement(userNumberBy).sendKeys(phone);
+
+        WebDriverWait webDriverWait = new WebDriverWait(webDriver, Duration.ofSeconds(3));
+
+
         return this;
     }
 
