@@ -6,10 +6,7 @@ Cada pasta dentro deste repositório é um projeto diferente, todos os sites usa
 
 ## Padrões utilizados
 1. Page Object
-2. Loadable Component*
 3. Domain specific language (DSL)
-4. Improved reporting
-5. Order of best locators*
 6. Test independency
 7. Fluent API
 8. Fresh browser per test
